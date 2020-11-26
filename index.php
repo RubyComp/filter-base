@@ -72,9 +72,9 @@
 
 				$filters_relations = get_query($mysqli, 'SELECT id, filter_id FROM filters_values WHERE 1');
 
-				foreach ($user_filters as $key => $value) {
+				if ( !is_numeric($value) ) die('Invalid "filters" value.');
 
-					if ( !is_numeric($value) ) die('Invalid "filters" value.');
+				foreach ($user_filters as $key => $value) {
 
 					$parent_filter = search($filters_relations, 'id', $value);
 
